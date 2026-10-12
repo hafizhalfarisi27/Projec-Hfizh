@@ -1,0 +1,35 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Navigasi Aktif */
+.active-nav {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #2563eb !important;
+  font-weight: 700;
+}
+
+/* Animasi untuk cetak bukti */
+@media print {
+  header, nav, button, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

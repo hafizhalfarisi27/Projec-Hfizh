@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPDB SMA Negeri 1 Digital System</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- File CSS Eksternal -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <script>
+    // Konfigurasi Tema Tailwind
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8'
+            }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen font-sans transition-colors duration-200">
+
+  <!-- Header & Navigasi -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06] bg-white/80 dark:bg-slate-900/80 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/30">
+            <i data-lucide="graduation-cap"></i>
+          </div>
+          <div>
+            <h1 class="font-bold text-lg leading-tight text-slate-900 dark:text-white">PPDB SMA Negeri 1</h1>
+            <p class="text-xs text-blue-600 dark:text-blue-400 font-semibold flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Sistem Digital 2026/2027
+            </p>
+          </div>
+        </div>
+
+        <!-- Menu Navigasi Desktop -->
+        <nav class="hidden md:flex items-center space-x-1 text-sm font-medium">
+          <button onclick="switchTab('home')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition active-nav" data-tab="home">Beranda</button>
+          <button onclick="switchTab('register')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="register">Pendaftaran</button>
+          <button onclick="switchTab('status')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="status">Cek Status</button>
+          <button onclick="switchTab('ranking')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="ranking">Jurnal Peringkat</button>
+          <button onclick="switchTab('calculator')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="calculator">Simulasi Biaya</button>
+          <button onclick="switchTab('admin')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="admin">Admin Panel</button>
+        </nav>
+
+        <!-- Kanan: Dark Mode & Tombol Daftar -->
+        <div class="flex items-center space-x-3">
+          <button id="themeToggle" onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+            <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+            <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+          </button>
+          <button onclick="switchTab('register')" class="hidden sm:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-lg shadow-md shadow-blue-500/20 transition">
+            <i data-lucide="user-plus" class="w-4 h-4"></i>
+            Daftar Sekarang
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Konten Utama (Berbagai Tab) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- Tab 1: Beranda -->
+    <section id="tab-home" class="tab-content space-y-12">
+      <!-- Hero Section -->
+      <div class="relative overflow-hidden rounded-3xl  bg-gradient-to-r from-blue-600 to-indigo-800 text-white p-8 md:p-12 shadow-2xl">
+        <div class="relative z-10 max-w-2xl space-y-6">
+          <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-3 py-2 rounded-full text-xs font-semibold uppercase tracking-wider">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> Penerimaan Siswa Baru
+          </span>
+          <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">Mewujudkan Generasi Unggul & Berkarakter</h2>
+          <p class="text-blue-100 text-base md:text-lg">Selamat datang di Portal PPDB Online SMA Negeri 1. Proses pendaftaran mudah, transparan, dan terintegrasi secara langsung.</p>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <button onclick="switchTab('register')" class="bg-white text-blue-600 font-bold px-6 py-3 rounded-xl shadow-lg hover:bg-blue-50 transition flex items-center gap-2">
+              Isi Formulir Pendaftaran <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button onclick="switchTab('status')" class="bg-blue-700/50 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl backdrop-blur border border-white/20 transition">
+              Cek Status Seleksi
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Informasi Jalur Pendaftaran -->
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-700/60">
+          <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="map-pin" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Jalur Zonasi</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Kuota 50%. Diperuntukkan bagi calon peserta didik yang berdomisili dekat sekolah.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-700/60">
+          <div class="w-12 h-12 bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="award" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Jalur Prestasi</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Kuota 30%. Berdasarkan nilai rata-rata rapor akademik atau kejuaraan non-akademik.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-700/60">
+          <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Jalur Afirmasi</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Kuota 15%. Bagi keluarga kurang mampu pemilik KIP/PKH & calon peserta disabilitas.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-700/60">
+          <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="briefcase" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Perpindahan Tugas</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Kuota 5%. Diperuntukkan bagi calon peserta dari perpindahan tugas orang tua/wali.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: Pendaftaran (Form Multi-Langkah) -->
+    <section id="tab-register" class="tab-content hidden max-w-3xl mx-auto">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 dark:border-slate-700">
+        <h2 class="text-2xl font-bold mb-6 text-center">Formulir Pendaftaran Siswa Baru</h2>
+        
+        <!-- Wizard Progress Bar -->
+        <div class="flex justify-between items-center mb-8 relative">
+          <div class="w-full bg-slate-200 dark:bg-slate-700 h-1 absolute top-1/2 -translate-y-1/2 z-0"></div>
+          <div id="progress-line" class="bg-blue-600 h-1 absolute top-1/2 -translate-y-1/2 z-0 w-0 transition-all duration-300"></div>
+
+          <div class="step-icon active z-10 w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-sm" id="step-dot-1">1</div>
+          <div class="step-icon z-10 w-8 h-8 rounded-full bg-slate-300 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold flex items-center justify-center text-sm" id="step-dot-2">2</div>
+          <div class="step-icon z-10 w-8 h-8 rounded-full bg-slate-300 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold flex items-center justify-center text-sm" id="step-dot-3">3</div>
+          <div class="step-icon z-10 w-8 h-8 rounded-full bg-slate-300 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-bold flex items-center justify-center text-sm" id="step-dot-4">4</div>
+        </div>
+
+        <form id="ppdbForm" onsubmit="handleFormSubmit(event)">
+          <!-- Langkah 1: Pilih Jalur -->
+          <div id="form-step-1" class="step-pane space-y-4">
+            <h3 class="font-semibold text-lg border-b pb-2 dark:border-slate-700">Langkah 1: Pilih Jalur Pendaftaran</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="p-4 border dark:border-slate-700 rounded-xl cursor-pointer hover:border-blue-500 transition flex items-start gap-3">
+                <input type="radio" name="jalur" value="Zonasi" class="mt-1" checked />
+                <div>
+                  <p class="font-bold">Jalur Zonasi</p>
+                  <p class="text-xs text-slate-500">Berdasarkan jarak tempat tinggal</p>
+                </div>
+              </label>
+              <label class="p-4 border dark:border-slate-700 rounded-xl cursor-pointer hover:border-blue-500 transition flex items-start gap-3">
+                <input type="radio" name="jalur" value="Prestasi" class="mt-1" />
+                <div>
+                  <p class="font-bold">Jalur Prestasi</p>
+                  <p class="text-xs text-slate-500">Nilai Rapor & Kejuaraan</p>
+                </div>
+              </label>
+              <label class="p-4 border dark:border-slate-700 rounded-xl cursor-pointer hover:border-blue-500 transition flex items-start gap-3">
+                <input type="radio" name="jalur" value="Afirmasi" class="mt-1" />
+                <div>
+                  <p class="font-bold">Jalur Afirmasi</p>
+                  <p class="text-xs text-slate-500">Pemilik KIP / PKH</p>
+                </div>
+              </label>
+              <label class="p-4 border dark:border-slate-700 rounded-xl cursor-pointer hover:border-blue-500 transition flex items-start gap-3">
+                <input type="radio" name="jalur" value="Perpindahan" class="mt-1" />
+                <div>
+                  <p class="font-bold">Perpindahan Orang Tua</p>
+                  <p class="text-xs text-slate-500">Pindah tugas instansi/kantor</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Langkah 2: Data Diri -->
+          <div id="form-step-2" class="step-pane space-y-4 hidden">
+            <h3 class="font-semibold text-lg border-b pb-2 dark:border-slate-700">Langkah 2: Data Pribadi Siswa</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Nama Lengkap</label>
+                <input type="text" id="inputNama" required class="w-full p-2.5 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="Ahmad Fauzi" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">NISN</label>
+                <input type="number" id="inputNISN" required class="w-full p-2.5 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="0071234567" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Sekolah Asal</label>
+                <input type="text" id="inputSekolah" required class="w-full p-2.5 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="SMP Negeri 1 Surabaya" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Nomor WhatsApp / HP</label>
+                <input type="tel" id="inputHP" required class="w-full p-2.5 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="081234567890" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Langkah 3: Nilai & Jurusan -->
+          <div id="form-step-3" class="step-pane space-y-4 hidden">
+            <h3 class="font-semibold text-lg border-b pb-2 dark:border-slate-700">Langkah 3: Nilai Rapor & Pilihan Jurusan</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-xs font-medium mb-1">Matematika</label>
+                <input type="number" min="0" max="100" id="nilMtk" oninput="calculateAverage()" required class="w-full p-2 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="85" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">IPA</label>
+                <input type="number" min="0" max="100" id="nilIPA" oninput="calculateAverage()" required class="w-full p-2 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="88" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">IPS</label>
+                <input type="number" min="0" max="100" id="nilIPS" oninput="calculateAverage()" required class="w-full p-2 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="82" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">Bahasa Indonesia</label>
+                <input type="number" min="0" max="100" id="nilIndo" oninput="calculateAverage()" required class="w-full p-2 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="90" />
+              </div>
+              <div>
+                <label class="block text-xs font-medium mb-1">Bahasa Inggris</label>
+                <input type="number" min="0" max="100" id="nilIng" oninput="calculateAverage()" required class="w-full p-2 rounded-lg border dark:border-slate-700 dark:bg-slate-900" placeholder="86" />
+              </div>
+              <div class="bg-blue-50 dark:bg-blue-900/30 p-2 rounded-lg flex flex-col justify-center items-center">
+                <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Rata-Rata</span>
+                <span id="displayAvg" class="text-xl font-bold text-blue-700 dark:text-blue-300">0.00</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-1">Pilihan Jurusan/Peminatan</label>
+              <select id="inputJurusan" class="w-full p-2.5 rounded-lg border dark:border-slate-700 dark:bg-slate-900">
+                <option value="MIPA">MIPA (Matematika & Ilmu Pengetahuan Alam)</option>
+                <option value="IPS">IPS (Ilmu Pengetahuan Sosial)</option>
+                <option value="Bahasa">Bahasa & Budaya</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Langkah 4: Konfirmasi -->
+          <div id="form-step-4" class="step-pane space-y-4 hidden">
+            <h3 class="font-semibold text-lg border-b pb-2 dark:border-slate-700">Langkah 4: Konfirmasi Pendaftaran</h3>
+            <div class="p-4 bg-slate-50 dark:bg-slate-900 rounded-xl space-y-2 text-sm">
+              <p><strong>Pernyataan:</strong> Saya menyatakan bahwa seluruh data yang diisikan adalah benar dan dapat dipertanggungjawabkan.</p>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="checkSetuju" required class="w-4 h-4 text-blue-600 rounded" />
+              <span class="text-sm">Saya menyetujui syarat & ketentuan pendaftaran.</span>
+            </label>
+          </div>
+
+          <!-- Tombol Navigasi Wizard -->
+          <div class="flex justify-between mt-8 pt-4 border-t dark:border-slate-700">
+            <button type="button" id="prevBtn" onclick="moveStep(-1)" class="px-4 py-2 border rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 hidden">Kembali</button>
+            <button type="button" id="nextBtn" onclick="moveStep(1)" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg ml-auto">Lanjut</button>
+            <button type="submit" id="submitBtn" class="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg ml-auto hidden">Kirim Pendaftaran</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Tab 3: Cek Status -->
+    <section id="tab-status" class="tab-content hidden max-w-xl mx-auto space-y-6">
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 text-center">
+        <h2 class="text-xl font-bold mb-4">Cek Status Pendaftaran</h2>
+        <div class="flex gap-2">
+          <input type="text" id="searchKode" placeholder="Masukkan Nomor Registrasi / NISN" class="flex-1 p-3 rounded-xl border dark:border-slate-700 dark:bg-slate-900 text-sm" />
+          <button onclick="checkStatus()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-xl font-semibold text-sm flex items-center gap-1">
+            <i data-lucide="search" class="w-4 h-4"></i> Cari
+          </button>
+        </div>
+      </div>
+      <div id="statusResult" class="hidden bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700"></div>
+    </section>
+
+    <!-- Tab 4: Jurnal Peringkat -->
+    <section id="tab-ranking" class="tab-content hidden space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <h2 class="text-2xl font-bold">Jurnal Peringkat Pendaftar</h2>
+        <input type="text" id="filterSearch" oninput="renderRankingTable()" placeholder="Cari Nama Siswa / Sekolah..." class="p-2.5 rounded-xl border dark:border-slate-700 dark:bg-slate-800 text-sm w-full md:w-64" />
+      </div>
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow overflow-x-auto border border-slate-200 dark:border-slate-700">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
+            <tr>
+              <th class="p-4">Rank</th>
+              <th class="p-4">No. Registrasi</th>
+              <th class="p-4">Nama Siswa</th>
+              <th class="p-4">Sekolah Asal</th>
+              <th class="p-4">Jalur</th>
+              <th class="p-4">Jurusan</th>
+              <th class="p-4">Nilai Akhir</th>
+            </tr>
+          </thead>
+          <tbody id="rankingTableBody" class="divide-y dark:divide-slate-700"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Tab 5: Kalkulator Biaya -->
+    <section id="tab-calculator" class="tab-content hidden max-w-2xl mx-auto space-y-6">
+      <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-200 dark:border-slate-700 space-y-4">
+        <h2 class="text-2xl font-bold">Simulasi Estimasi Biaya Pendidikan</h2>
+        <p class="text-sm text-slate-500">Hitung estimasi rincian biaya awal masuk sekolah secara transparan.</p>
+        
+        <div class="space-y-3 pt-2">
+          <label class="flex justify-between items-center p-3 border rounded-xl dark:border-slate-700">
+            <span class="text-sm font-medium">Seragam & Perlengkapan Sekolah</span>
+            <span class="font-bold">Rp 1.200.000</span>
+          </label>
+          <label class="flex justify-between items-center p-3 border rounded-xl dark:border-slate-700">
+            <span class="text-sm font-medium">SPP Bulan Pertama</span>
+            <span class="font-bold">Rp 350.000</span>
+          </label>
+          <label class="flex justify-between items-center p-3 border rounded-xl dark:border-slate-700">
+            <span class="text-sm font-medium">Buku & Modul Pembelajaran</span>
+            <span class="font-bold">Rp 450.000</span>
+          </label>
+          <label class="flex justify-between items-center p-3 border rounded-xl dark:border-slate-700">
+            <span class="text-sm font-medium">Kegiatan Ekstrakurikuler</span>
+            <span class="font-bold">Rp 200.000</span>
+          </label>
+        </div>
+
+        <div class="bg-blue-50 dark:bg-blue-900/40 p-4 rounded-xl flex justify-between items-center border border-blue-200 dark:border-blue-800">
+          <span class="font-bold text-slate-700 dark:text-slate-200">Total Biaya Masuk:</span>
+          <span class="text-2xl font-extrabold text-blue-600 dark:text-blue-400">Rp 2.200.000</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 6: Admin Panel -->
+    <section id="tab-admin" class="tab-content hidden space-y-6">
+      <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold">Panel Kontrol Verifikator Admin</h2>
+        <button onclick="clearAllData()" class="bg-rose-600 hover:bg-rose-700 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">
+          Reset Semua Data
+        </button>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow overflow-x-auto border border-slate-200 dark:border-slate-700">
+        <table class="w-full text-left text-sm">
+          <thead class="bg-slate-100 dark:bg-slate-700">
+            <tr>
+              <th class="p-4">No. Registrasi</th>
+              <th class="p-4">Nama</th>
+              <th class="p-4">Jalur</th>
+              <th class="p-4">Nilai</th>
+              <th class="p-4">Status</th>
+              <th class="p-4">Aksi Verifikasi</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody" class="divide-y dark:divide-slate-700"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- File JS Eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>
